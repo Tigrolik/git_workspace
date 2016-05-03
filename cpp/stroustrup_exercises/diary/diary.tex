@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\begin{document}
+
+\begin{center}
+  \LARGE{\bf{What's new (C++11)}}
+\end{center}
+
+\subsection*{Basics}
+
+\begin{enumerate}
+
+  \item double d \{2.3\}: use \{\} (list form) when in doubt: saves from
+    conversions:
+    int i \{7.8\} // error;
+
+  \item auto b = true: auto defines the type (use if don't have a reason to
+    specify the type explicitly);
+
+  \item Constexpr: to be evaluated at compile time, used primarily to specify
+    constants, to allow placement of data in memory where it is unlikely to be
+    corrupted, and for performance;
+
+  \item range-for: for (auto x: v)\ldots, where v is a vector;
+
+  \item enum class Color \{red, blue, yellow\}; enum class Apple\{red, green\};
+    Color z = Color::red, Apple a = Apple::red;
+
+  \item Exceptions: stdexception\ldots; try\ldots catch; static\_assert: check
+    constant expressions;
+
+\end{enumerate}
+
+\subsection*{Abstraction Mechanisms}
+
+\begin{enumerate}
+
+  \item Initializing containers: Vector
+    (std::initializer\_list$<${int}$>$);
+
+  \item Pure virtual functions:\\
+    classclass Container \{\\
+      public:\\
+      virtual double\& operator[] (int) = 0;\\
+      virtual int size () const = 0;\\
+      virtual ˜Container () \{\}\\
+    \};
+
+  \item unique\_ptr, shared\_ptr;
+
+  \item copy and move constructors and assignments;
+
+  \item Suppressing operations: Shape (const Shape\&) = delete; used to suppress
+    any operation;
+
+  \item Templates, function templates, function objects, variadic templates;
+
+  \item lambda expressions: [\&] (int a)\{return a $<$ x\}, aliases.
+
+\end{enumerate}
+
+\subsection*{Containers and Algorithms}
+
+\begin{enumerate}
+
+  \item STL containers;
+
+  \item Iterators;
+
+  \item Predicates;
+
+\end{enumerate}
+
+\subsection*{Concurrency and Utilities}
+
+\begin{enumerate}
+
+  \item Concurrency: mutex (mutual exclusion object), threads;
+
+  \item unique\_ptr, shared\_ptr;
+
+  \item Task: computation that can potenitially be concurrently executed with
+    other computations. A thread is a system level representation of a task;
+
+  \item Threads of a program share a single address space; controlled by locks
+    and other mechanisms to prevent data races (uncontrolled concurrent access
+    to a variable);
+
+  \item future, promise, packaged\_task, async;
+
+  \item chrono library;
+
+  \item type functions: evaluated at compile-time. Examples: numeric\_limits,
+    sizeof;
+
+  \item iterator\_traits;
+
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,15 @@
+Joe 3
+Kate 2
+Alex 4
+Peter 1
+Mary 8
+Joe 5
+Kate 1
+Alex 3
+Peter 7
+Mary 4
+Joe 6
+Kate 9
+Alex 3
+Peter 5
+Mary 1
