@@ -133,7 +133,7 @@ void triangle_buf(vector<int>, vector<int>, vector<int>,
 
 void triangle_tex(vector<int>, vector<int>, vector<int>, vector<int>,
         vector<int>, vector<int>, vector<int>&, PPM_Image&, PPM_Image&,
-        const double br = 1.0);
+        const double = 1.0);
 
 #endif
 

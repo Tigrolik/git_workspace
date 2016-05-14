@@ -95,7 +95,7 @@ void test_zbuffer() {
 
     PPM_Image zbimg {w, h};
     for (int i {0}; i < w; ++i)
-        for (int j {0}; j < w; ++j)
+        for (int j {0}; j < h; ++j)
             zbimg.pixel_color(i, j,
                     PPM_Color{static_cast<uchar>(zbuf[i + j * w])});
     write_ppm_image(zbimg, "zbuffer.ppm");
