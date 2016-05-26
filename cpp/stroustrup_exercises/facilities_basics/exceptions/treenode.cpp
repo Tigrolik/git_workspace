@@ -37,7 +37,7 @@ void print_all(Tnode *t) {
     std::cout << t << t->count << '\n';
 }
 
-void print_preorder(Tnode *t) {
+void print_preorder(const Tnode *t) {
     std::cout << t->word << ", ";
     if (t->left)
         print_preorder(t->left);
@@ -45,7 +45,7 @@ void print_preorder(Tnode *t) {
         print_preorder(t->right);
 }
 
-void print_postorder(Tnode *t) {
+void print_postorder(const Tnode *t) {
     if (t->left)
         print_preorder(t->left);
     if (t->right)
@@ -53,7 +53,7 @@ void print_postorder(Tnode *t) {
     std::cout << t->word << ", ";
 }
 
-void print_inorder(Tnode *t) {
+void print_inorder(const Tnode *t) {
     if (t->left)
         print_preorder(t->left);
     std::cout << t->word << ", ";
@@ -61,7 +61,7 @@ void print_inorder(Tnode *t) {
         print_preorder(t->right);
 }
 
-void print_levelorder(Tnode *t) {
+void print_levelorder(const Tnode *t) {
     std::queue<const Tnode*> q;
     q.push(t);
     while (!q.empty()) {
@@ -71,6 +71,19 @@ void print_levelorder(Tnode *t) {
         if (n->left) q.push(n->left);
         if (n->right) q.push(n->right);
     }
+}
+
+struct Not_found { };
+
+Tnode* find_str(Tnode *p, const std::string &s) {
+    if (!p)
+        throw Not_found{};
+    else if (p->word == s)
+        return p;
+    else if (p->word < s)
+        return find_str(p->right, s);
+    else
+        return find_str(p->left, s);
 }
 
 int main() {
@@ -97,6 +110,20 @@ int main() {
     print_levelorder(root);
     std::cout << root->count << '\n';
 
+    std::string s {"bit"};
+    try {
+        Tnode *f = find_str(root, s);
+        std::cout << "Found: " << f->word << '\n';
+    } catch (const Not_found &e) {
+        std::cerr << "Word \"" + s + "\" not found in the tree\n";
+    }
+    s = "big";
+    try {
+        Tnode *f = find_str(root, s);
+        std::cout << "Found: " << f->word << '\n';
+    } catch (const Not_found &e) {
+        std::cerr << "Word \"" + s + "\" not found in the tree\n";
+    }
 
     return 0;
 }
